@@ -1,0 +1,203 @@
+object Form1: TForm1
+  Left = 536
+  Height = 505
+  Top = 275
+  Width = 866
+  Caption = 'Form1'
+  ClientHeight = 505
+  ClientWidth = 866
+  LCLVersion = '1.8.0.4'
+  object Memo1: TMemo
+    Left = 326
+    Height = 363
+    Top = 52
+    Width = 293
+    TabOrder = 0
+  end
+  object Button7: TButton
+    Left = 245
+    Height = 25
+    Top = 52
+    Width = 75
+    Caption = 'Pesquisar'
+    OnClick = Button7Click
+    TabOrder = 1
+  end
+  object Edit2: TEdit
+    Left = 156
+    Height = 25
+    Top = 90
+    Width = 80
+    TabOrder = 2
+    Text = 'Edit2'
+  end
+  object Edit3: TEdit
+    Left = 156
+    Height = 25
+    Top = 132
+    Width = 80
+    TabOrder = 3
+    Text = 'Edit3'
+  end
+  object Edit4: TEdit
+    Left = 156
+    Height = 25
+    Top = 174
+    Width = 80
+    TabOrder = 4
+    Text = 'Edit4'
+  end
+  object Edit5: TEdit
+    Left = 156
+    Height = 25
+    Top = 216
+    Width = 80
+    TabOrder = 5
+    Text = 'Edit5'
+  end
+  object Edit6: TEdit
+    Left = 156
+    Height = 25
+    Top = 258
+    Width = 80
+    TabOrder = 6
+    Text = 'Edit6'
+  end
+  object Edit7: TEdit
+    Left = 156
+    Height = 25
+    Top = 300
+    Width = 80
+    TabOrder = 7
+    Text = 'Edit7'
+  end
+  object Edit8: TEdit
+    Left = 156
+    Height = 25
+    Top = 342
+    Width = 80
+    TabOrder = 8
+    Text = 'Edit8'
+  end
+  object Edit9: TEdit
+    Left = 156
+    Height = 25
+    Top = 384
+    Width = 80
+    TabOrder = 9
+    Text = 'Edit9'
+  end
+  object Edit10: TEdit
+    Left = 155
+    Height = 25
+    Top = 52
+    Width = 89
+    TabOrder = 10
+    Text = '38.307-272'
+  end
+  object Label1: TLabel
+    Left = 48
+    Height = 15
+    Top = 96
+    Width = 103
+    Caption = 'LOGRADOURO'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 38
+    Height = 15
+    Top = 138
+    Width = 113
+    Caption = 'COMPLEMENTO'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 96
+    Height = 15
+    Top = 180
+    Width = 55
+    Caption = 'BAIRRO'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 59
+    Height = 15
+    Top = 222
+    Width = 92
+    Caption = 'LOCALIDADE'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 132
+    Height = 15
+    Top = 264
+    Width = 19
+    Caption = 'UF'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 85
+    Height = 15
+    Top = 306
+    Width = 66
+    Caption = 'UNIDADE'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 117
+    Height = 15
+    Top = 348
+    Width = 34
+    Caption = 'IBGE'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label8: TLabel
+    Left = 126
+    Height = 15
+    Top = 390
+    Width = 25
+    Caption = 'GIA'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label9: TLabel
+    Left = 122
+    Height = 15
+    Top = 62
+    Width = 29
+    Caption = 'CEP'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 326
+    Height = 15
+    Top = 33
+    Width = 70
+    Caption = 'RETORNO'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+  end
+  object ViaCep1: TViaCep
+    Formato_Dados = fdJson
+    left = 262
+    top = 100
+  end
+end

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1502094498"/>
+  <Params Value=" -Twin32 -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -Fu/home/sales/.lazarus/lib/units/i386-win32 -Fu/usr/share/lazarus/1.8.0RC4/components/lazutils/lib/i386-win32 -Fu/home/sales/.lazarus/lib/LCLBase/units/i386-win32 &quot;-Fu/media/sales/6BD1D9FB0013F8A3/Programas Lazarus/Componentes/ViaCep/&quot; &quot;-FU/media/sales/6BD1D9FB0013F8A3/Programas Lazarus/Componentes/ViaCep/lib/i386-win32/&quot; pkviacep.pas"/>
+</CONFIG>
