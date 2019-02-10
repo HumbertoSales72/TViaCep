@@ -51,7 +51,7 @@ Type
     Funidade       : string;
     FSobre         : TAbout;
     Const
-    Furl           = 'https://viacep.com.br/ws/';
+    Furl           = 'http://www.viacep.com.br/ws/';
     procedure SetCaracter(AValue: Tcaixa);
     procedure Setcep(AValue: String);
 
@@ -156,6 +156,8 @@ procedure TViaCep.executar;
 begin
   With Tfphttpclient.create(Nil) do
           begin
+               //AddHeader('Content-Type','application/json; charset=utf-8');
+               AllowRedirect := true;
                try
                    case FormatoDados of
                        fdxml   :  SubtrairDados(fdXml, Get( fUrl + fcep +'/xml/' ) );
