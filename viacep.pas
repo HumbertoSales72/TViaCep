@@ -1,3 +1,4 @@
+{$DEFINE  ViaCep}
 unit viacep;
 
 {$mode objfpc}{$H+}
@@ -5,8 +6,20 @@ unit viacep;
 interface
 
 uses
-  Classes, SysUtils, LResources, TextStrings, fphttpclient, fpjson, jsonparser,
-  jsonscanner, XMLRead, Dom, strutils;
+  Classes, SysUtils, LResources, TextStrings, fphttpclient, XMLRead, Dom, strutils
+  ,JsonTools;
+
+///////////////////////////TViaCep/////////////////////////////////
+//   Desenvolvedor: Humberto Sales                               //
+//   Email        : humbertoliveira@hotmail.com                  //
+//   Telegram     : https://t.me/joinchat/CSQp_RFqlyfvOQYE5oKKZw //
+//   Colaboradores:                                              //
+//        (informe nomes aqui - caso seja um colaborador)        //
+//        *                                                      //
+//        *                                                      //
+//                                                               //
+///////////////////////////////////////////////////////////////////
+
 
 Type
 
@@ -35,7 +48,7 @@ Type
 
   { TViaCep }
 
-  TViaCep = Class(TComponent)
+   TViaCep = Class(TComponent)
   private
     Fbairro        : string;
     FCaracter: Tcaixa;
@@ -48,13 +61,11 @@ Type
     Flogradouro    : string;
     Fretorno: string;
     Fuf            : string;
-    Funidade       : string;
     FSobre         : TAbout;
     Const
     Furl           = 'http://www.viacep.com.br/ws/';
     procedure SetCaracter(AValue: Tcaixa);
     procedure Setcep(AValue: String);
-
     procedure subtrairdados(fd: TformatoDados; informacao: String);
     public
       constructor Create(theOwner: TComponent);override;
@@ -70,13 +81,11 @@ Type
       property bairro        : string read Fbairro;
       property localidade    : string read Flocalidade;
       property uf            : string read Fuf;
-      property unidade       : string read Funidade;
       property ibge          : string read Fibge;
       property gia           : string read Fgia;
       property retorno       : string read Fretorno;
       property caracter      : Tcaixa read FCaracter write SetCaracter;
       property Sobre         : TAbout read FSobre;
-
   end;
 
   procedure register;
@@ -112,24 +121,22 @@ begin
   FData          := '05/08/2017';
   FVersao        := '1.0';
   FLicenca       := 'Usar a vontade';
-  FAgradecimento := 'https://viacep.com.br/ sem vocês esse componente não seria possível!';
+  FAgradecimento := 'http://viacep.com.br/ sem vocês esse componente não seria possível!';
 end;
-
-
 
 constructor TViaCep.Create(theOwner: TComponent);
 begin
     inherited create(TheOwner);
     FFormatoDados := fdJson;
-    FCaracter        := cIniciais;
+    FCaracter     := cIniciais;
     FSobre        := TAbout.create;
 end;
 
 destructor TViaCep.Destroy;
 begin
+  FreeAndNil(FSobre);
   inherited Destroy;
 end;
-
 
 procedure TViaCep.Setcep(AValue: String);
    function soNumeros(valor : String) : String;
@@ -193,7 +200,7 @@ procedure TViaCep.subtrairdados(fd : TformatoDados;informacao : String);
     end;
 var
   i: Integer;
-  JsDados : TJSONObject; // fpjson, jsonparser, jsonscanner;
+  JsDados : TJsonNode; // jsontools;
   Doc: TXMLDocument;   //XMLRead,Dom,
   Node: TDOMNode;
   M  : TStringStream;
@@ -225,8 +232,6 @@ begin
                        Flocalidade  := Caracteres( Node.TextContent,fCaracter );
                        Node         := Doc.DocumentElement.FindNode('uf');
                        fuf          := Caracteres( Node.TextContent,fCaracter );
-                       Node         := Doc.DocumentElement.FindNode('unidade');
-                       Funidade     := Caracteres( Node.TextContent,fCaracter );
                        Node         := Doc.DocumentElement.FindNode('ibge');
                        Fibge        := Caracteres( Node.TextContent,fCaracter );
                        Node         := Doc.DocumentElement.FindNode('gia');
@@ -238,17 +243,22 @@ begin
                  end;
           fdJson  :
                  begin
-                     JsDados      := TJsonObject( TJSONParser.Create(Informacao,[joUTF8]).Parse );
-                     Fcep         := Caracteres( JsDados.Strings['cep'],fCaracter );
-                     Flogradouro  := Caracteres( JsDados.Strings['logradouro'],fCaracter );
-                     Fcomplemento := Caracteres( JsDados.Strings['complemento'],fCaracter );
-                     Fbairro      := Caracteres( JsDados.Strings['bairro'],fCaracter );
-                     Flocalidade  := Caracteres( JsDados.Strings['localidade'],fCaracter );
-                     fuf          := Caracteres( JsDados.Strings['uf'],fCaracter );
-                     Funidade     := Caracteres( JsDados.Strings['unidade'],fCaracter );
-                     Fibge        := Caracteres( JsDados.Strings['ibge'],fCaracter );
-                     fgia         := Caracteres( JsDados.Strings['gia'],fCaracter );
-                     JsDados.Free;
+                     try
+                        JsDados      := TJsonNode.Create;
+                        JsDados.Parse( Informacao );
+                        Fcep         := Caracteres( JsDados.Find('cep').AsString,fCaracter );
+                        Flogradouro  := Caracteres( JsDados.Find('logradouro').AsString,fCaracter );
+                        Fcomplemento := Caracteres( JsDados.Find('complemento').AsString,fCaracter );
+                        Fbairro      := Caracteres( JsDados.Find('bairro').AsString,fCaracter );
+                        Flocalidade  := Caracteres( JsDados.Find('localidade').AsString,fCaracter );
+                        fuf          := Caracteres( JsDados.Find('uf').AsString,fCaracter );
+                        Fibge        := Caracteres( JsDados.Find('ibge').AsString,fCaracter );
+                        fgia         := Caracteres( JsDados.Find('gia').AsString,fCaracter );
+
+                     finally
+                       JsDados.Free;
+                     end;
+
 
                  end;
           fdpiped :
@@ -265,8 +275,6 @@ begin
                      Flocalidade  := Caracteres( copy(Informacao,1,pos('|',Informacao) -1 ), fCaracter );
                      delete(informacao,1,pos(':',informacao));
                      Fuf          := Caracteres( copy(Informacao,1,pos('|',Informacao) -1 ), fCaracter );
-                     delete(informacao,1,pos(':',informacao));
-                     Funidade     := Caracteres( copy(Informacao,1,pos('|',Informacao) -1 ), fCaracter );
                      delete(informacao,1,pos(':',informacao));
                      Fibge        := Caracteres( copy(Informacao,1,pos('|',Informacao) -1 ), fCaracter );
                      delete(informacao,1,pos(':',informacao));

@@ -67,7 +67,6 @@ begin
          Edit4.text    := bairro;
          Edit5.text    := Localidade;
          Edit6.text    := uf;
-         Edit7.text    := Unidade;
          Edit8.text    := Ibge;
          Edit9.text    := gia;
          Memo1.text    := retorno;  //retorno do envio

@@ -14,6 +14,7 @@ uses
 
 begin
   RequireDerivedFormResource:=True;
+  Application.Title:='Demo Via Cep';
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
   Application.Run;

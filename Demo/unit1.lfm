@@ -3,10 +3,10 @@ object Form1: TForm1
   Height = 505
   Top = 275
   Width = 866
-  Caption = 'Form1'
+  Caption = 'by Humberto sales de Oliveira    Email: humbertosales@midassistemas.com.br'
   ClientHeight = 505
   ClientWidth = 866
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '2.0.4.0'
   object Memo1: TMemo
     Left = 326
     Height = 363
@@ -25,7 +25,7 @@ object Form1: TForm1
   end
   object Edit2: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 90
     Width = 80
     TabOrder = 2
@@ -33,7 +33,7 @@ object Form1: TForm1
   end
   object Edit3: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 132
     Width = 80
     TabOrder = 3
@@ -41,7 +41,7 @@ object Form1: TForm1
   end
   object Edit4: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 174
     Width = 80
     TabOrder = 4
@@ -49,7 +49,7 @@ object Form1: TForm1
   end
   object Edit5: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 216
     Width = 80
     TabOrder = 5
@@ -57,7 +57,7 @@ object Form1: TForm1
   end
   object Edit6: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 258
     Width = 80
     TabOrder = 6
@@ -65,7 +65,7 @@ object Form1: TForm1
   end
   object Edit7: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 300
     Width = 80
     TabOrder = 7
@@ -73,7 +73,7 @@ object Form1: TForm1
   end
   object Edit8: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 342
     Width = 80
     TabOrder = 8
@@ -81,7 +81,7 @@ object Form1: TForm1
   end
   object Edit9: TEdit
     Left = 156
-    Height = 25
+    Height = 29
     Top = 384
     Width = 80
     TabOrder = 9
@@ -89,7 +89,7 @@ object Form1: TForm1
   end
   object Edit10: TEdit
     Left = 155
-    Height = 25
+    Height = 29
     Top = 52
     Width = 89
     TabOrder = 10
@@ -97,7 +97,7 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 48
-    Height = 15
+    Height = 19
     Top = 96
     Width = 103
     Caption = 'LOGRADOURO'
@@ -107,9 +107,9 @@ object Form1: TForm1
   end
   object Label2: TLabel
     Left = 38
-    Height = 15
+    Height = 19
     Top = 138
-    Width = 113
+    Width = 112
     Caption = 'COMPLEMENTO'
     Font.Style = [fsBold]
     ParentColor = False
@@ -117,7 +117,7 @@ object Form1: TForm1
   end
   object Label3: TLabel
     Left = 96
-    Height = 15
+    Height = 19
     Top = 180
     Width = 55
     Caption = 'BAIRRO'
@@ -127,9 +127,9 @@ object Form1: TForm1
   end
   object Label4: TLabel
     Left = 59
-    Height = 15
+    Height = 19
     Top = 222
-    Width = 92
+    Width = 91
     Caption = 'LOCALIDADE'
     Font.Style = [fsBold]
     ParentColor = False
@@ -137,7 +137,7 @@ object Form1: TForm1
   end
   object Label5: TLabel
     Left = 132
-    Height = 15
+    Height = 19
     Top = 264
     Width = 19
     Caption = 'UF'
@@ -147,7 +147,7 @@ object Form1: TForm1
   end
   object Label6: TLabel
     Left = 85
-    Height = 15
+    Height = 19
     Top = 306
     Width = 66
     Caption = 'UNIDADE'
@@ -157,7 +157,7 @@ object Form1: TForm1
   end
   object Label7: TLabel
     Left = 117
-    Height = 15
+    Height = 19
     Top = 348
     Width = 34
     Caption = 'IBGE'
@@ -167,7 +167,7 @@ object Form1: TForm1
   end
   object Label8: TLabel
     Left = 126
-    Height = 15
+    Height = 19
     Top = 390
     Width = 25
     Caption = 'GIA'
@@ -177,9 +177,9 @@ object Form1: TForm1
   end
   object Label9: TLabel
     Left = 122
-    Height = 15
+    Height = 19
     Top = 62
-    Width = 29
+    Width = 27
     Caption = 'CEP'
     Font.Style = [fsBold]
     ParentColor = False
@@ -187,17 +187,18 @@ object Form1: TForm1
   end
   object Label10: TLabel
     Left = 326
-    Height = 15
+    Height = 19
     Top = 33
-    Width = 70
+    Width = 71
     Caption = 'RETORNO'
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
   end
   object ViaCep1: TViaCep
-    Formato_Dados = fdJson
-    left = 262
-    top = 100
+    FormatoDados = fdJson
+    caracter = cIniciais
+    left = 255
+    top = 96
   end
 end
